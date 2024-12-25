@@ -1,0 +1,17 @@
+IF
+	InParty("C0NIRIK")
+	Global("N_Done","GLOBAL",1)
+	OR(2)
+	Global("C0NPCInterjectTimer","MYAREA",0)
+	!RealGlobalTimerExpired("C0NPCInterjectTimer","MYAREA")
+	CombatCounter(0)
+	Switch("C0NirikTL1","MYAREA")
+THEN
+RESPONSE #0
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	RealSetGlobalTimer("C0NPCInterjectTimer","MYAREA",2)
+RESPONSE #1
+	SetGlobal("C0NirikTL1","MYAREA",2)
+	DisplayStringHead("C0NIRIK",~Be at peace, noble sonnlinor.~)
+	RealSetGlobalTimer("C0NPCInterjectTimer","MYAREA",2)
+END

@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	TriggerOverride("C0NIRIK",See("Statue"))
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~Archdruid Tolben, Kuldahar's first leader... we continue to honor his teachings to this day.~)
+END

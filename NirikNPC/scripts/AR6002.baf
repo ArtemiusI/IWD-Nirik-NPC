@@ -1,0 +1,11 @@
+IF
+	InParty("C0NIRIK")
+	TriggerOverride("C0NIRIK",See("Symbol Table"))
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(1)
+	DisplayStringHead("C0NIRIK",~These symbols represent the gods of my people... Moradin, Clangeddin, and Berronar.~)
+END

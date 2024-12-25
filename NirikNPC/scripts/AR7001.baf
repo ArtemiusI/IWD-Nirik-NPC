@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	TriggerOverride("C0NIRIK",See("Whale"))
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~By the Earthmother... such colossal beasts of nature truly exist!~)
+END

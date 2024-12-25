@@ -1,0 +1,9 @@
+IF
+	InParty("C0NIRIK")
+	Global("C0NirikTL1","MYAREA",0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(4)
+	DisplayStringHead("C0NIRIK",~We must be several leagues beneath the earth by now.~)
+END

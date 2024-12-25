@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	TriggerOverride("C0NIRIK",See("Kitchen Table 2"))
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~Pardon me. The stench... by the Earthmother, it is unbearable.~)
+END

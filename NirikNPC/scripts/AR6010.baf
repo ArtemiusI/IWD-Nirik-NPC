@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(2)
+	DisplayStringHead("C0NIRIK",~More symbols of the Morndinsamman. Perhaps this and the table outside are connected.~)
+END

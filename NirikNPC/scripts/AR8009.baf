@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	NearLocation("C0NIRIK",1210,2291,10)
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~This was once a thriving district, no doubt... to see it fallen to such ruin saddens my heart.~)
+END

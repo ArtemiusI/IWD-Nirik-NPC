@@ -1,0 +1,159 @@
+// TALK - AR3000
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+	Global("C0NirikTalkTimer","LOCALS",0)
+	RealGlobalTimerExpired("C0NirikTalkTimer","LOCALS")
+	!See([ENEMY])
+	CombatCounter(0)
+	AreaCheck("AR3000")
+	Switch("C0NirikTalkAR3000","AR3000")
+THEN
+RESPONSE #0
+	SetGlobal("C0NirikTalkAR3000","AR3000",1)
+	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",6)
+RESPONSE #1
+	SetGlobal("C0NirikTalkAR3000","AR3000",2)
+	StartDialogueNoSet(Player1)
+END
+
+// TALK - ARUNDEL DIES
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+	Global("C0NirikTalkTimer","LOCALS",0)
+	RealGlobalTimerExpired("C0NirikTalkTimer","LOCALS")
+	!See([ENEMY])
+	CombatCounter(0)
+	Global("Severed_Hand_Reveal","GLOBAL",1)
+	AreaCheck("AR2100")
+	Switch("C0NirikArundelDeathTalk","GLOBAL")
+THEN
+RESPONSE #0
+	SetGlobal("C0NirikArundelDeathTalk","GLOBAL",1)
+	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",4)
+RESPONSE #1
+	StartDialogueNoSet(Player1)
+END
+
+// TALK - AR3001
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+	Global("C0NirikTalkTimer","LOCALS",0)
+	RealGlobalTimerExpired("C0NirikTalkTimer","LOCALS")
+	!See([ENEMY])
+	CombatCounter(0)
+	Global("#spawned_shadow","AR3001",1)
+	!InMyArea("vsshad1")
+	AreaCheck("AR3001")
+	Switch("C0NirikLysanDeathTalk","GLOBAL")
+THEN
+RESPONSE #0
+	SetGlobal("C0NirikLysanDeathTalk","GLOBAL",1)
+	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",3)
+RESPONSE #1
+	StartDialogueNoSet(Player1)
+END
+
+// TALK - AR6002
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+	Global("C0NirikTalkTimer","LOCALS",0)
+	RealGlobalTimerExpired("C0NirikTalkTimer","LOCALS")
+	!See([ENEMY])
+	CombatCounter(0)
+	NearLocation(Myself,1954,1666,10)
+	AreaCheck("AR6002")
+	Switch("C0NirikDornsDeepTalk","GLOBAL")
+THEN
+RESPONSE #0
+	SetGlobal("C0NirikDornsDeepTalk","GLOBAL",1)
+	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",4)
+RESPONSE #1
+	StartDialogueNoSet(Player1)
+END
+
+// TALK - AR7000
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+	Global("C0NirikTalkTimer","LOCALS",0)
+	RealGlobalTimerExpired("C0NirikTalkTimer","LOCALS")
+	!See([ENEMY])
+	CombatCounter(0)
+	AreaCheck("AR7000")
+	Switch("C0NirikAR7000Talk","GLOBAL")
+THEN
+RESPONSE #0
+	SetGlobal("C0NirikAR7000Talk","GLOBAL",1)
+	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",4)
+RESPONSE #1
+	StartDialogueNoSet(Player1)
+END
+
+// Staff of Nature's Wrath +1
+
+IF
+	InParty(Myself)
+	CombatCounter(0)
+	HasItemEquiped("NATURE",Myself)
+	Global("C0NirikNATURESTAF","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	SetGlobal("C0NirikNATURESTAF","GLOBAL",1)
+	Wait(1)
+	DisplayStringHead(Myself,~Master Arundel's staff... I will carry it in his name, to see the Earthmother's will done.~)
+	SetInterrupt(TRUE)
+END
+
+// Lord Toadeus
+
+IF
+	InParty(Myself)
+	CombatCounter(0)
+	HasItemEquiped("L#ITOA1",Myself)
+	Global("C0NirikLordToadeus","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	SetGlobal("C0NirikLordToadeus","GLOBAL",1)
+	Wait(1)
+	DisplayStringHead(Myself,~We both have our parts to play in the cycle, little toad.~)
+	SetInterrupt(TRUE)
+END
+
+// Birds/Squirrels
+
+IF
+	InParty(Myself)
+	CombatCounter(0)
+	OR(2)
+	PartyHasItem("BIRDS")
+	PartyHasItem("SQUIREL")
+	Global("C0NirikCagedAnimals","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	SetGlobal("C0NirikCagedAnimals","GLOBAL",1)
+	Wait(1)
+	DisplayStringHead(Myself,~Creatures of the forest deserve a proper home, not a cage.~)
+	SetInterrupt(TRUE)
+END

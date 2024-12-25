@@ -1,0 +1,11 @@
+IF
+	InParty("C0NIRIK")
+	Global("C0NirikTL1","MYAREA",0)
+	Global("FORGE_ON","GLOBAL",1)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(2)
+	DisplayStringHead("C0NIRIK",~At last... the souls of these warriors can have their deserved rest.~)
+END

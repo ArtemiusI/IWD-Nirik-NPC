@@ -1,0 +1,14 @@
+IF
+	InParty("C0NIRIK")
+	Global("Arbor_Birds","GLOBAL",1)
+	Global("Arbor_Squirrels","GLOBAL",1)
+	Global("Arbor_Water","GLOBAL",1)
+	Global("Arbor_Seeds","GLOBAL",1)
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(1)
+	DisplayStringHead("C0NIRIK",~Brimming with life once more... as it should be.~)
+END

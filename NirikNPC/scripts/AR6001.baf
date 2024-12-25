@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	TriggerOverride("C0NIRIK",See("Monument"))
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~"Through unity we persevere"... but what became of that unity? I must know the truth.~)
+END

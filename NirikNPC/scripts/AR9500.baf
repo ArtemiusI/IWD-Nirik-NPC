@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(10)
+	DisplayStringHead("C0NIRIK",~This deathly cold defies all natural logic...~)
+END

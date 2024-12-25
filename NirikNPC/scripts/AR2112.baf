@@ -1,0 +1,15 @@
+IF
+	Global("C0NirikSpawn","ar2112",0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikSpawn","ar2112",1)
+	CreateCreatureImpassable("C0NIRIK",[160.242],SE)
+END
+
+IF
+	!BeenInParty("C0NIRIK")
+	GlobalGT("SPRITE_IS_DEADYxunomei","GLOBAL",0)
+THEN
+RESPONSE #100
+	ActionOverride("C0NIRIK",DestroySelf())
+END

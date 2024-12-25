@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	TriggerOverride("C0NIRIK",See("Molten Metal 3"))
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~This blazing heat... it cannot be from the old forges alone.~)
+END

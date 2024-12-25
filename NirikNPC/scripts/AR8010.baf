@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	NearLocation("C0NIRIK",392,409,10)
+	Global("C0NirikTL1","MYAREA",0)
+	CombatCounter(0)
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	DisplayStringHead("C0NIRIK",~By the Earthmother... the denizen of this place is breeding abominations.~)
+END

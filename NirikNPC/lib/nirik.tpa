@@ -1,0 +1,96 @@
+//AUDIO
+
+LAF HANDLE_AUDIO END
+
+///////////////
+// CREATURES //
+///////////////
+
+COPY ~%MOD_FOLDER%/creatures/C0NIRIK.cre~ ~override~
+  SAY NAME1 ~Nirik~
+  SAY NAME2 ~Nirik~
+  WRITE_ASCII SCRIPT_OVERRIDE ~C0NIRIK~ // override
+  WRITE_ASCII DEATHVAR ~C0NIRIK~ // death variable
+  WRITE_ASCII DIALOG ~C0NIRIK~ // dialogue
+  WRITE_ASCII 0X34 ~C0NIRIM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0NIRIL~ #8   //medium portrait
+  SAY BIO ~When asked about his past, NIRIK politely informs you that he was born of the Bannerstone clan of the Silver Marches. As the youngest member of his family, Nirik had few responsibilities save for training to protect the clan, yet his small stature—even by dwarven standards—hampered his potential as a warrior. Through an unusual set of circumstances, he crossed paths with a druid from the High Forest who saw in him the potential to become a servant of Nature and tutored him in the druidic arts. At the guidance of his first mentor, Nirik parted ways with his clan at a very young age to travel northwards to the Frozenfar, where he became apprenticed to archdruid Arundel in Kuldahar. Though a meek and quiet soul, Nirik shows a clear determination to become a capable druid in order to return home and become a proud clansman in his own way.~
+  SAY MORALE ~~
+  SAY HAPPY ~Nature thanks you, as do I.~ [C0NIR001]
+  SAY UNHAPPY_ANNOYED ~Your actions go against the will of Nature.~ [C0NIR002]
+  SAY UNHAPPY_SERIOUS ~There will be no place in the cycle for one such as you.~ [C0NIR003]
+  SAY UNHAPPY_BREAKING ~Enough! Master Arundel will know of everything you've done!~ [C0NIR004]
+  SAY LEADER ~I will follow the guidance of Mother Nature as I lead us all.~ [C0NIR005]
+  SAY TIRED ~All things must rest. I suggest we stop for the day.~ [C0NIR006]
+  SAY BORED ~Master Arundel has taught me the value of patience... I will do my best to follow his advice at this moment.~ [C0NIR007]
+  SAY BATTLE_CRY1 ~Nature's wrath will strike you down!~ [C0NIR008]
+  SAY BATTLE_CRY2 ~For Kuldahar!~ [C0NIR009]
+  SAY BATTLE_CRY3 ~For the Great Oak!~ [C0NIR010]
+  SAY BATTLE_CRY4 ~In the name of Clan Bannerstone!~ [C0NIR011]
+  SAY BATTLE_CRY5 ~Return to the earth!~ [C0NIR012]
+  SAY DAMAGE ~Ouf!~ [C0NIR013]
+  SAY DYING ~I... fall, in Nature's embrace...~ [C0NIR014]
+  SAY HURT ~Death is part of the cycle, but... not here... not now...~ [C0NIR015]
+  SAY AREA_FOREST ~Mother Nature guides and protects us in this hallowed place.~ [C0NIR016]
+  SAY AREA_CITY ~The cities of Man are as much a product of Nature as anything else.~ [C0NIR017]
+  SAY AREA_DUNGEON ~This place... almost reminds me of home.~ [C0NIR018]
+  SAY AREA_DAY ~The sun will light our path.~ [C0NIR019]
+  SAY AREA_NIGHT ~The moon provides us respite from the terror of darkness.~ [C0NIR020]
+  SAY SELECT_COMMON1 ~Aye?~ [C0NIR021]
+  SAY SELECT_COMMON2 ~I am here.~ [C0NIR022]
+  SAY SELECT_COMMON3 ~What would you ask of Nature's servant?~ [C0NIR023]
+  SAY SELECT_COMMON4 ~My strength is at your disposal.~ [C0NIR024]
+  SAY SELECT_COMMON5 ~What must I do?~ [C0NIR025]
+  SAY SELECT_COMMON6 ~I heed your command.~ [C0NIR026]
+  SAY SELECT_ACTION1 ~Nature give me strength.~ [C0NIR027]
+  SAY SELECT_ACTION2 ~I'll not fail you.~ [C0NIR028]
+  SAY SELECT_ACTION3 ~For the service of Kuldahar.~ [C0NIR029]
+  SAY SELECT_ACTION4 ~Is it time to act soon?~ [C0NIR030]
+  SAY SELECT_ACTION5 ~Hmm? Pardon me, I was listening to the voice of the winds.~ [C0NIR031]
+  SAY SELECT_ACTION6 ~I am still a dwarf, with all the impatience that implies.~ [C0NIR032]
+  SAY SELECT_ACTION7 ~Sometimes I miss the underground, but... Kuldahar is my true home.~ [C0NIR033]
+  SAY CRITICAL_HIT ~This is the might of Nature!~ [C0NIR034]
+  SAY CRITICAL_MISS ~Mountain's arse!~ [C0NIR035]
+  SAY TARGET_IMMUNE ~This foe is unnatural!~ [C0NIR036]
+  SAY INVENTORY_FULL ~I am, small, even for a dwarf. Forgive me, that was too much to carry.~ [C0NIR037]
+  SAY SPELL_DISRUPTED ~My communion with Nature was interrupted.~ [C0NIR038]
+
+APPEND ~pdialog.2da~ ~C0NIRIK     C0NIRIKP           C0NIRIKJ          C0NIRIKD       C0NIRIKP           C0NIRIKJ              C0NIRIKD              C0NIRIK~
+UNLESS ~C0NIRIK~
+
+APPEND ~interdia.2da~ ~C0NIRIK BC0NIRIK BC0NIRIK~
+  UNLESS ~C0NIRIK~
+
+APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~
+  
+/////////////
+//DIALOGUES//
+/////////////
+ 
+OUTER_SET nirik_gain_wisdom = RESOLVE_STR_REF (~Nirik has permanently gained two points of Wisdom.~ [EFF_M72D])
+
+ACTION_FOR_EACH dialog_d IN C0NIRIK C0NIRIKJ BEGIN
+COMPILE ~%MOD_FOLDER%/DIALOGUE/%dialog_d%.D~ EVAL
+END
+
+ACTION_IF MOD_IS_INSTALLED ~KULDAHAR/KULDAHAR.TP2~ ~0~ THEN BEGIN
+
+COMPILE ~%MOD_FOLDER%/CROSSMOD/KULDAHAR.D~
+
+END
+
+///////////
+//SCRIPTS//
+///////////
+ 
+ACTION_FOR_EACH area_scripts IN 1104 2100 2112 4004 4005 5304 6002 6005 6006 6010 6013 7001 8001 8013 8009 8010 9500 9501 9718 9800 BEGIN
+EXTEND_TOP ~AR%area_scripts%.BCS~ ~%MOD_FOLDER%/SCRIPTS/AR%area_scripts%.BAF~
+END
+
+COMPILE ~%MOD_FOLDER%/SCRIPTS/C0NIRIK.BAF~
+
+/////////
+//ITEMS//
+/////////

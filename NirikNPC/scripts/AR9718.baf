@@ -1,0 +1,10 @@
+IF
+	InParty("C0NIRIK")
+	Global("C0NirikTL1","MYAREA",0)
+	TriggerOverride("C0NIRIK",See([0.0.0.OLIVE_SLIME]))
+THEN
+RESPONSE #100
+	SetGlobal("C0NirikTL1","MYAREA",1)
+	Wait(1)
+	DisplayStringHead("C0NIRIK",~These types of slimes are vulnerable to the elements.~)
+END
