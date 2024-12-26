@@ -10,13 +10,12 @@ IF
 	!See([ENEMY])
 	CombatCounter(0)
 	AreaCheck("AR3000")
-	Switch("C0NirikTalkAR3000","AR3000")
+	Switch("C0NirikTalkVale","GLOBAL")
 THEN
 RESPONSE #0
-	SetGlobal("C0NirikTalkAR3000","AR3000",1)
-	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",6)
+	SetGlobal("C0NirikTalkVale","GLOBAL",1)
+	RealSetGlobalTimer("C0NirikTalkTimer","GLOBAL",3)
 RESPONSE #1
-	SetGlobal("C0NirikTalkAR3000","AR3000",2)
 	StartDialogueNoSet(Player1)
 END
 
